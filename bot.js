@@ -18,6 +18,58 @@ client.on('ready', function() {
 
 
 
+                  client.on('message', message => {
+                      var prefix = "+";
+                       
+                        if (!message.content.startsWith(prefix)) return;
+                        var args = message.content.split(' ').slice(1);
+                        var argresult = args.join(' ');
+                        if (message.author.id == 396958215377780747) return;
+                       
+                
+                       
+                
+                       
+                      if (message.content.startsWith(prefix + 'setname')) {
+                      if (message.author.id !== '400329871278211073') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+                        client.user.setUsername(argresult).then
+                            message.channel.sendMessage(`**${argresult}** : تم تغير الأسم`)
+                        return message.reply("**لا تستطيع تغير الأسم الا بعد ساعتين**");
+                      } else
+                           
+                      if (message.content.startsWith(prefix + 'setavatar')) {
+                      if (message.author.id !== '400329871278211073') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+                      client.user.setAvatar(argresult);
+                          message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+                      }
+                       
+                       });
+
+
+
+
+  client.on('ready', function(){
+        client.user.setStatus("dnd");
+        var ms = 60000 ;
+        var setGame = [`+help `];
+        var i = -1;
+        var j = 0;
+        setInterval(function (){
+            if( i == -1 ){
+                j = 1;
+            }
+            if( i == (setGame.length)-1 ){
+                j = -1;
+            }
+            i = i+j;
+            client.user.setGame(setGame[i],``);
+        }, ms);60000
+    
+   });
+
+
+
+
 /*
 ////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\
 ////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\
